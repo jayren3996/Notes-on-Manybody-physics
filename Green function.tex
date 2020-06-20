@@ -1,0 +1,225 @@
+%% LyX 2.3.4.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[10pt,english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{luainputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2cm,rmargin=2cm,headheight=1cm,headsep=1cm}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title{Green function}
+\date{Jie Ren}
+\maketitle
+
+\section{Lattice and Field}
+
+\subsection{Discrete lattice}
+
+We will focus on systems that:
+\begin{itemize}
+\item live on $L^{d}$-site lattice,
+\item with time-independent Hamiltonian,
+\item have translational symmetry,
+\item are in ground states or thermal equilibrium states.
+\end{itemize}
+The elementary particle operators have commutation relation:
+
+\[
+\left[c_{i,\alpha},c_{j,\beta}\right]_{\pm}=\left[c_{i,\alpha}^{\dagger},c_{j,\beta}^{\dagger}\right]_{\pm}=0,
+\]
+
+\[
+\left[c_{i,\alpha},c_{j,\beta}^{\dagger}\right]_{\pm}=\delta_{ij}\delta_{\alpha\beta}
+\]
+for Bosonic and Fermionic system respectively. In momentum space,
+the particle operators are defined as:
+
+\begin{eqnarray*}
+c_{\bm{k}_{n},\alpha} & = & \frac{1}{L^{d/2}}\sum_{j}e^{-i\bm{k}_{n}\cdot\bm{x}_{j}}c_{j,\alpha}\\
+c_{j,\alpha} & = & \frac{1}{L^{d/2}}\sum_{n}e^{+i\bm{k}_{n}\cdot\bm{x}_{j}}c_{\bm{k}_{n},\alpha}
+\end{eqnarray*}
+where the discrete lattice coordinates and crystal momentums are:
+
+\begin{eqnarray*}
+\bm{x}_{j} & = & a\left(j_{1},\cdots,j_{d}\right),\\
+\bm{k}_{n} & = & \frac{2\pi}{aL}\left(n_{1},\cdots,n_{d}\right).
+\end{eqnarray*}
+In this way, the commutation relation on momentum space is still normalized:
+
+\[
+\left[c_{\bm{k}_{m},\alpha},c_{\bm{k}_{n},\beta}\right]_{\pm}=\left[c_{\bm{k}_{m},\alpha}^{\dagger},c_{\bm{k}_{n},\beta}^{\dagger}\right]_{\pm}=0,
+\]
+
+\[
+\left[c_{\bm{k}_{m},\alpha},c_{\bm{k}_{n},\beta}^{\dagger}\right]_{\pm}=\delta_{mn}\delta_{\alpha\beta}.
+\]
+
+
+\subsection{Continuous field}
+
+We are now to define a continuous theory. First, the lattice summation
+becomes integration when taking the thermodynamics limit:
+
+\begin{eqnarray*}
+\lim_{L\rightarrow\infty}\sum_{\bm{k}_{m}} & = & \left(aL\right)^{d}\int\frac{d^{d}k}{\left(2\pi\right)^{d}}.
+\end{eqnarray*}
+We would like to substitute the lattice particle operators with a
+continuous field operator:
+
+\[
+c_{\bm{k}_{n},\alpha}\rightarrow\psi_{\bm{k},\alpha}
+\]
+We let the total particle number to be
+
+\[
+N_{\alpha}=\int\frac{d^{d}k}{\left(2\pi\right)^{d}}\psi_{\bm{k},\alpha}^{\dagger}\psi_{\bm{k},\alpha}
+\]
+so that we can use
+
+\[
+\int\frac{d^{d}k}{\left(2\pi\right)^{d}}\psi_{\bm{k},\alpha}^{\dagger}\psi_{\bm{k},\alpha}=\sum_{n}c_{\bm{k}_{n},\alpha}^{\dagger}c_{\bm{k}_{n},\alpha}
+\]
+to determine the normalization:
+\[
+\psi_{\bm{k},\alpha}=\lim_{L\rightarrow\infty}\left(aL\right)^{d/2}c_{\bm{k}_{n},\alpha}
+\]
+Under such definition, the commutation relation becomes
+
+\[
+\left[\psi_{\bm{k},\alpha},\psi_{\bm{k}',\beta}^{\dagger}\right]_{\pm}=\delta_{\bm{k}\bm{k}'}\lim_{L\rightarrow\infty}\left(aL\right)^{d}=\left(2\pi\right)^{d}\delta\left(0\right).
+\]
+The right-hand-side can be replaced by a delta function since
+
+\[
+\int d^{d}x=\left(2\pi\right)^{d}\delta\left(0\right)=\lim_{L\rightarrow\infty}\left(aL\right)^{d}.
+\]
+The field operator is defined as
+\[
+\psi_{\alpha}\left(\bm{x}\right)=\int\frac{d^{d}k}{\left(2\pi\right)^{d}}e^{+i\bm{k}\cdot\bm{x}}\psi_{\bm{k},\alpha}.
+\]
+When including time revolution:
+
+\[
+\psi_{\alpha}\left(x\right)=e^{iHt}\psi\left(\bm{x}\right)e^{-iHt}.
+\]
+The Green functions
+
+\begin{eqnarray*}
+G_{\alpha\beta}^{T}\left(x-x'\right) & = & -i\left\langle T_{t}\left[\psi_{\alpha}\left(x\right)\psi_{\beta}^{\dagger}\left(x'\right)\right]\right\rangle \\
+G_{\alpha\beta}^{R}\left(x-x'\right) & = & -i\theta\left(t-t'\right)\left\langle \left[\psi_{\alpha}\left(x\right),\psi_{\beta}^{\dagger}\left(x'\right)\right]_{\pm}\right\rangle \\
+G_{\alpha\beta}^{A}\left(x-x'\right) & = & +i\theta\left(t'-t\right)\left\langle \left[\psi_{\alpha}\left(x\right),\psi_{\beta}^{\dagger}\left(x'\right)\right]_{\pm}\right\rangle 
+\end{eqnarray*}
+The bracket can be interpreted as ground state expectation or thermal
+average. The Fourier transformation for Green function is
+
+\begin{eqnarray*}
+G_{\alpha\beta}\left(x,0\right) & = & \int\frac{d^{d}k}{\left(2\pi\right)^{d}}\int\frac{d\omega}{2\pi}e^{i\left(\bm{k}\cdot\bm{x}-\omega t\right)}G_{\alpha\beta}\left(\bm{k},\omega\right)\\
+G_{\alpha\beta}\left(\bm{k},\omega\right) & = & \int d^{d}x\int dt\ e^{-i\left(\bm{k}\cdot\bm{x}-\omega t\right)}G_{\alpha\beta}\left(x,0\right)
+\end{eqnarray*}
+
+
+\section{Non-interacting System}
+
+\subsection{Zero temperature}
+
+Suppose after diagonalization, the lattice Hamiltonian becomes
+
+\[
+\hat{H}\left(\bm{k}\right)=\sum_{\sigma}\epsilon_{\sigma}\left(\bm{k}\right)c_{\bm{k},\sigma}^{\dagger}c_{\bm{k},\sigma}.
+\]
+Then we can define:
+
+\begin{eqnarray*}
+c_{k,\sigma} & = & e^{-i\epsilon_{\sigma}\left(\bm{k}\right)}c_{\bm{k},\sigma}\\
+c_{k,\sigma}^{\dagger} & = & e^{+i\epsilon_{\sigma}\left(\bm{k}\right)}c_{\bm{k},\sigma}^{\dagger}\\
+\psi_{\sigma}\left(x\right) & = & \int\frac{d^{d}k}{\left(2\pi\right)^{d}}e^{+ik\cdot x}c_{\bm{k},\sigma}\\
+\psi_{\sigma}^{\dagger}\left(x\right) & = & \int\frac{d^{d}k}{\left(2\pi\right)^{d}}e^{-ik\cdot x}c_{\bm{k},\sigma}^{\dagger}
+\end{eqnarray*}
+where
+
+\[
+k\cdot x=\bm{k}\cdot\bm{x}-\epsilon_{\sigma}\left(\bm{k}\right)t.
+\]
+The Green function is exact in non-interacting system. The building
+block is the average of the single particle operator:
+
+\begin{eqnarray*}
+\left\langle c_{\bm{k},\sigma}^{\dagger}c_{\bm{k}',\sigma'}\right\rangle  & = & \delta_{\sigma\sigma'}\delta_{\bm{k}\bm{k}'}n_{\bm{k}},\\
+\left\langle c_{\bm{k},\sigma}c_{\bm{k}',\sigma'}^{\dagger}\right\rangle  & = & \delta_{\sigma\sigma'}\delta_{\bm{k}\bm{k}'}\left(1\pm n_{\bm{k}}\right).
+\end{eqnarray*}
+\[
+n_{\bm{k}}=\frac{1}{e^{\beta\epsilon_{\sigma}\left(\bm{k}\right)}\mp1}.
+\]
+For the field operator:
+
+\begin{eqnarray*}
+\left\langle \psi_{\bm{k},\sigma}^{\dagger}\psi_{\bm{k}',\sigma'}\right\rangle  & = & \delta_{\sigma\sigma'}\left(2\pi\right)^{d}\delta^{d}\left(\bm{k}-\bm{k}'\right)n_{\bm{k}},\\
+\left\langle \psi_{\bm{k},\sigma}\psi_{\bm{k}',\sigma'}^{\dagger}\right\rangle  & = & \delta_{\sigma\sigma'}\left(2\pi\right)^{d}\delta^{d}\left(\bm{k}-\bm{k}'\right)\left(1\pm n_{\bm{k}}\right),
+\end{eqnarray*}
+The diagonalized Green function is defined by
+
+\[
+G_{\sigma\sigma'}\left(x-x'\right)=\delta_{\sigma\sigma'}G_{\sigma}\left(x-x'\right).
+\]
+and two basic green function is:
+
+\begin{eqnarray*}
+iG_{\sigma}^{>}\left(x-x'\right) & = & \left\langle \psi_{\sigma}\left(x\right)\psi_{\sigma}^{\dagger}\left(x'\right)\right\rangle \\
+ & = & \int\frac{d^{d}k}{\left(2\pi\right)^{d}}\int\frac{d^{d}k'}{\left(2\pi\right)^{d}}e^{i\left(k\cdot x-k'\cdot x'\right)}\left\langle \psi_{\bm{k},\sigma}\psi_{\bm{k}',\sigma}^{\dagger}\right\rangle \\
+ & = & \int\frac{d^{d}k}{\left(2\pi\right)^{d}}e^{ik\cdot\left(x-x'\right)}\left(1\pm n_{\bm{k}}\right)
+\end{eqnarray*}
+
+\begin{eqnarray*}
+iG_{\sigma}^{<}\left(x-x'\right) & = & \pm\left\langle \psi_{\sigma}^{\dagger}\left(x'\right)\psi_{\sigma}\left(x\right)\right\rangle \\
+ & = & \pm\int\frac{d^{d}k}{\left(2\pi\right)^{d}}\int\frac{d^{d}k'}{\left(2\pi\right)^{d}}e^{i\left(k\cdot x-k'\cdot x'\right)}\left\langle \psi_{\bm{k}',\sigma}^{\dagger}\psi_{\bm{k},\sigma}\right\rangle \\
+ & = & \pm\int\frac{d^{d}k}{\left(2\pi\right)^{d}}e^{ik\cdot\left(x-x'\right)}n_{\bm{k}}
+\end{eqnarray*}
+In momentum space:
+
+\begin{eqnarray*}
+iG_{\sigma}^{>}\left(\bm{k},t\right) & = & e^{-i\epsilon_{\sigma}\left(\bm{k}\right)t}\left(1\pm n_{\bm{k}}\right)\\
+iG_{\sigma}^{<}\left(\bm{k},t\right) & = & \pm e^{-i\epsilon_{\sigma}\left(\bm{k}\right)t}n_{\bm{k}}
+\end{eqnarray*}
+The time-ordered Green function is
+
+\begin{eqnarray*}
+G_{\sigma}^{T}\left(\bm{k},t\right) & = & \theta\left(t\right)G_{\sigma}^{>}\left(\bm{k},t\right)+\theta\left(-t\right)G_{\sigma}^{<}\left(\bm{k},t\right)\\
+ & = & -ie^{-i\epsilon_{\sigma}\left(\bm{k}\right)t}\left[\theta\left(t\right)\left(1\pm n_{\bm{k}}\right)\pm\theta\left(-t\right)n_{\bm{k}}\right]
+\end{eqnarray*}
+Use the identity
+
+\begin{eqnarray*}
+\theta\left(+t\right) & = & -\int\frac{d\omega}{2\pi i}\frac{e^{-i\omega t}}{\omega+i\eta},\\
+\theta\left(-t\right) & = & +\int\frac{d\omega}{2\pi i}\frac{e^{-i\omega t}}{\omega-i\eta},
+\end{eqnarray*}
+where $\eta=0^{+}$. The time integral is done by:
+
+\begin{eqnarray*}
+-ie^{-i\epsilon_{\sigma}\left(\bm{k}\right)t}\theta\left(t\right) & = & \int\frac{d\omega}{2\pi}\frac{e^{-i\left(\omega+\epsilon_{\sigma}\left(\bm{k}\right)\right)t}}{\omega+i\eta}\\
+ & = & \int\frac{d\omega}{2\pi}\frac{e^{-i\omega t}}{\omega-\epsilon_{\sigma}\left(\bm{k}\right)+i\eta}
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\mp ie^{-i\epsilon_{\sigma}\left(\bm{k}\right)t}\theta\left(-t\right) & = & \mp\int\frac{d\omega}{2\pi}\frac{e^{-i\left(\omega+\epsilon_{\sigma}\left(\bm{k}\right)\right)t}}{\omega-i\eta}\\
+ & = & \mp\int\frac{d\omega}{2\pi}\frac{e^{-i\omega t}}{\omega-\epsilon_{\sigma}\left(\bm{k}\right)-i\eta}
+\end{eqnarray*}
+So the Green function in frequency space is
+
+\[
+G_{\sigma}^{T}\left(k\right)=\frac{1\pm n_{\bm{k}}}{\omega-\epsilon_{\sigma}\left(\bm{k}\right)+i\eta}\mp\frac{n_{\bm{k}}}{\omega-\epsilon_{\sigma}\left(\bm{k}\right)-i\eta}
+\]
+
+\end{document}
