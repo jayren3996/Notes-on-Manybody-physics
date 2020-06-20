@@ -605,7 +605,7 @@ For Matsubara function:
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\int_{0}^{\beta}d\tau e^{\left(i\omega_{n}-\epsilon_{n}+\epsilon_{m}\right)\tau}=\frac{\pm e^{-\beta\left(\epsilon_{n}-\epsilon_{m}\right)}-1}{i\omega_{n}-\epsilon_{n}+\epsilon_{m}}
+\int_{0}^{\beta}d\tau e^{\left(i\omega_{n}-\epsilon_{n}+\epsilon_{m}\right)\tau}=\frac{\pm e^{-\beta\left(\epsilon\right)}}{i\omega_{n}-\epsilon_{n}+\epsilon_{m}}
 \]
 
 \end_inset
@@ -615,20 +615,22 @@ For Matsubara function:
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\mathcal{G}_{\alpha\beta}\left(\bm{k},i\omega_{n}\right)=\int\frac{d\omega'}{2\pi}\frac{A\left(\bm{k},\omega'\right)}{i\omega_{n}-\omega'},
-\]
+\begin{eqnarray*}
+G_{\alpha\beta}^{>}\left(\bm{k},t\right) & = & -\frac{i}{Z}\sum_{nm}\rho_{n}\left\langle n\right|c_{\bm{k},\alpha}\left(t\right)\left|m\right\rangle \left\langle m\right|c_{\bm{k},\beta}^{\dagger}\left|n\right\rangle \\
+ & = & -\frac{i}{Z}\sum_{nm}\rho_{n}e^{-i\left(\epsilon_{n}-\epsilon_{m}\right)t}\left\langle n\right|c_{\bm{k},\alpha}\left|m\right\rangle \left\langle m\right|c_{\bm{k},\beta}^{\dagger}\left|n\right\rangle 
+\end{eqnarray*}
 
 \end_inset
 
-where the spectrum function is
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-A\left(\bm{k},\omega'\right)=\frac{1}{Z}\sum_{nm}\rho_{n}\left(1\mp e^{-\beta\left(\epsilon_{n}-\epsilon_{m}\right)}\right)\left\langle n\right|c_{\bm{k},\alpha}\left|m\right\rangle \left\langle m\right|c_{\bm{k},\beta}^{\dagger}\left|n\right\rangle \delta\left(\omega'-\epsilon_{n}+\epsilon_{m}\right).
-\]
+\begin{eqnarray*}
+G_{\alpha\beta}^{<}\left(\bm{k},t\right) & = & \mp\frac{i}{Z}\sum_{nm}\rho_{m}\left\langle m\right|c_{\bm{k},\beta}^{\dagger}\left|n\right\rangle \left\langle n\right|c_{\bm{k},\alpha}\left(t\right)\left|m\right\rangle \\
+ & = & \mp\frac{i}{Z}\sum_{nm}\rho_{m}e^{-i\left(\epsilon_{n}-\epsilon_{m}\right)t}\left\langle n\right|c_{\bm{k},\alpha}\left|m\right\rangle \left\langle m\right|c_{\bm{k},\beta}^{\dagger}\left|n\right\rangle 
+\end{eqnarray*}
 
 \end_inset
 
