@@ -1,0 +1,121 @@
+\documentclass[aps,prb,superscriptaddress]{revtex4}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{color}
+\usepackage{mathrsfs}
+\usepackage[colorlinks,bookmarks=true,citecolor=blue,linkcolor=red,urlcolor=blue]{hyperref}
+\usepackage{appendix}
+\usepackage{float}
+\setlength{\parindent}{10 pt}
+\setlength{\parskip}{2 pt}
+\setcounter{MaxMatrixCols}{30}
+\bibliographystyle{apsrev}
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+\begin{document}
+\title{Hidden SU(2) in Spin-1 XY model}
+\author{Jie Ren}
+\maketitle
+
+\section{Onsite SU(2)}
+
+For spin-1 model, we can define another onsite SU(2) operator:
+\begin{equation}
+\begin{cases}
+\tilde{s}^{\pm}\equiv\frac{1}{2}\left(S^{\pm}\right)^{2}\\
+\tilde{s}^{z}\equiv\frac{1}{2}S^{z}
+\end{cases},
+\end{equation}
+where $S_{j}^{\pm}$ is the regular $S=1$ spin operator. For spin-1:
+\begin{eqnarray}
+\left[\tilde{s}^{+},\tilde{s}^{-}\right] & = & 2\tilde{s}^{z},\\
+\left[\tilde{s}^{z},\tilde{s}^{\pm}\right] & = & \pm\tilde{s}^{\pm},\\
+\left\{ \tilde{s}^{+},\tilde{s}^{-}\right\}  & = & \left(S^{z}\right)^{2}.
+\end{eqnarray}
+The Casimir invariant for this SU(2) is
+\begin{equation}
+C_{2}=\frac{1}{2}\left(\tilde{s}^{+}\tilde{s}^{-}+\tilde{s}^{-}\tilde{s}^{+}\right)+\left(\tilde{s}^{z}\right)^{2}=\frac{3}{4}\left(S^{z}\right)^{2}.
+\end{equation}
+So we have
+\begin{equation}
+\left[\left(S^{z}\right)^{2},\tilde{s}^{\pm}\right]=0.
+\end{equation}
+Note that
+\begin{eqnarray}
+\left[\tilde{s}_{j}^{+},S_{j}^{-}\right] & = & S_{j}^{-}\left(1-2\left(S_{j}^{z}\right)^{2}\right),\\
+\left[\tilde{s}_{j}^{-},S_{j}^{+}\right] & = & S_{j}^{+}\left(1-2\left(S_{j}^{z}\right)^{2}\right),\\
+\left\{ \tilde{s}_{j}^{+},S_{j}^{-}\right\}  & = & S_{j}^{-},\\
+\left\{ \tilde{s}_{j}^{-},S_{j}^{+}\right\}  & = & S_{j}^{+}.
+\end{eqnarray}
+
+
+\section{Chain operator }
+Define a chain operator
+\begin{equation}
+U_{j}=\prod_{l=1}^{j-1}\left(1-2\left(S_{l}^{z}\right)^{2}\right).
+\end{equation}
+Note that
+\begin{equation}
+S_{j}^{\pm}U_{k}=\begin{cases}
+-U_{k}S_{j}^{\pm} & j<k\\
+U_{k}S_{j}^{\pm} & j\ge k
+\end{cases}.
+\end{equation}
+We introduce new operators
+\begin{equation}
+s_{j}^{\pm}=\tilde{s}_{j}^{\pm}U_{j},\ s_{j}=\tilde{s}_{j}.
+\end{equation}
+Since $\left[U_{j},s_{k}^{\pm}\right]=0$, $\left\{ s_{j}^{z},s_{j}^{\pm}\right\} $
+still satisfies su(2) algebra, and we can further define a global
+operator:
+\begin{equation}
+s_{T}^{\pm}=\sum_{j=1}^{L}s_{j}^{\pm},\ s_{T}^{z}=\sum_{j=1}^{L}s_{j}^{z},
+\end{equation}
+which also satisfies su(2) algebra.
+
+
+
+\section{Commutation relation}
+The Hamiltonian for spin-1 XY model (with open boundary) is:
+\begin{equation}
+H_{XY}=\frac{1}{2}\sum_{j=1}^{L-1}\left(S_{j}^{+}S_{j}^{-}+S_{j}^{-}S_{j}^{+}\right).
+\end{equation}
+We first note that for $k\ne j,j+1$:
+\begin{equation}
+\left[s_{k}^{+},S_{j}^{+}S_{j+1}^{-}+S_{j}^{-}S_{j+1}^{+}\right]=0.
+\end{equation}
+While for $k=j$:
+\begin{eqnarray}
+\left[s_{j}^{+},S_{j}^{+}S_{j+1}^{-}+S_{j}^{-}S_{j+1}^{+}\right] & = & S_{j+1}^{+}\left[\tilde{s}_{j}^{+},S_{j}^{-}\right]U_{j}\\
+ & = & S_{j}^{+}S_{j+1}^{+}U_{j+1},
+\end{eqnarray}
+and for $k=j+1$:
+\begin{eqnarray}
+\left[s_{j+1}^{+},S_{j}^{+}S_{j+1}^{-}+S_{j}^{-}S_{j+1}^{+}\right] & = & -S_{j}^{+}\left\{ \tilde{s}_{j+1}^{+},S_{j+1}^{-}\right\} U_{j+1}\\
+ & = & -S_{j}^{+}S_{j+1}^{+}U_{j+1}.
+\end{eqnarray}
+In this way
+\begin{equation}
+\left[s_{T}^{+},H_{XY}\right]=0.
+\end{equation}
+Similarly, we can show
+\begin{equation}
+\left[s_{T}^{-},H_{XY}\right]=0.
+\end{equation}
+
+
+%\begin{figure}[H]
+%\begin{centering}
+%\includegraphics[width=.4\linewidth]{}
+%\par\end{centering}
+%\caption{caption}
+%\end{figure}
+
+
+
+\end{document}
+
+

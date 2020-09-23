@@ -1,0 +1,114 @@
+\documentclass[aps,prb,superscriptaddress]{revtex4}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{color}
+\usepackage{mathrsfs}
+\usepackage[colorlinks,bookmarks=true,citecolor=blue,linkcolor=red,urlcolor=blue]{hyperref}
+\usepackage{appendix}
+\usepackage{float}
+\setlength{\parindent}{10 pt}
+\setlength{\parskip}{2 pt}
+\setcounter{MaxMatrixCols}{30}
+\bibliographystyle{apsrev}
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+\begin{document}
+\title{Quantum Geometric Tensor}
+\author{Jie Ren}
+\maketitle
+
+
+\section{Distance of two quantum states}
+Consider a family of parameter-dependent Hamiltonian $H(\lambda)$ smoothly depend on $\lambda = (\lambda_1,\lambda_2,\cdots, \lambda_n)$. The eigen system of the Hamiltonian is $\{E_n(\lambda), \psi_n(\lambda)\}$. A somple definition of the distance between two infinitesimally-varied states is:
+\begin{equation}
+	ds^2 \equiv \Vert \psi(\lambda+d\lambda)-\psi(\lambda) \Vert^2
+	= \langle\partial_\mu \psi | \partial_\nu \psi \rangle d\lambda^\mu d\lambda^\nu
+	= (\gamma_{\mu\nu}+i\sigma_{\mu\nu})d\lambda^\mu d\lambda^\nu.
+\end{equation}
+Because the matrix $ \langle\partial_\mu \psi | \partial_\nu \psi \rangle$ is Hermitian,
+\begin{equation}
+	\gamma_{\mu\nu} = \gamma_{\nu\mu},\ \sigma_{\mu\nu}=-\sigma_{\nu\mu}.
+\end{equation}
+The $\sigma_{\mu\nu} d \lambda^\mu d \lambda^\nu$ term vanishes due to the antisymmetry of $\sigma_{\mu\nu}$ and symmetry of $d \lambda^\mu d\lambda^\nu$. So that the distance is
+\begin{equation}
+	ds^2 = \gamma_{\mu\nu} d\lambda^\mu d\lambda^\nu.
+\end{equation}
+However, the $\gamma_{\mu\nu}$ is not invariant under the U(1) gauge transformation:
+\begin{equation}
+	|\psi\rangle \longrightarrow e^{i\alpha(\lambda)}|\psi\rangle,
+\end{equation}
+which introduce new term
+\begin{equation}
+	\gamma_{\mu\nu} \longrightarrow \gamma_{\mu\nu}-\beta_\mu \partial_\nu \alpha - \beta_\nu \partial_\mu \alpha + \partial_\mu \alpha \partial_\nu \alpha,
+\end{equation}
+where $\beta_\mu = i \langle \psi(\lambda)|\partial_\mu \psi \rangle$ is the Berry connection. We can use the Berry connection to define a gauge-invariant metric:
+\begin{equation}
+	g_{\mu\nu}(\lambda) \equiv \gamma_{\mu\nu}(\lambda) - \beta_\mu(\lambda) \beta_\nu(\lambda).
+\end{equation}
+Physically, the metric $\gamma_{\mu\nu}$ measures the distance between the ``bare" states in Hilbert space, while the metric $g_{\mu\nu}$ measures the distance of rays in projected Hilbert space $\mathcal{PH} = \mathcal H /U(1)$. For simplicity, we define \textit{Quantum Geometric Tensor}(QGT) $Q_{\mu\nu}$ as
+\begin{equation}
+	Q_{\mu\nu}(\lambda) \equiv 
+	\langle \partial_\mu \psi(\lambda) | \partial_\nu \psi(\lambda) \rangle - 
+	\langle \partial_\mu \psi(\lambda) | \psi(\lambda) \rangle 
+	\langle \psi(\lambda) | \partial_\nu \psi(\lambda) \rangle.
+\end{equation}  
+The metrics previously defined are related to QGT by
+\begin{equation}
+	g_{\mu\nu} = \mathrm{Re}\ Q_{\mu\nu},\ \sigma_{\mu\nu} = \mathrm{Im}\ Q_{\mu\nu}.
+\end{equation}
+
+\section{Inner product of two nearby states}
+Now consider the inner product of two near by states $|\langle \psi(\lambda+d\lambda) | \psi(\lambda) \rangle|$. Since
+\begin{equation}
+	\langle \psi(\lambda+d\lambda)| \psi(\lambda)\rangle
+	= 1 + i\beta_\mu(\lambda)+\frac{1}{2}\mathrm{Re}\langle \partial_\mu \partial_\nu \psi(\lambda)| \psi(\lambda) \rangle d\lambda^\mu d\lambda^\nu.
+\end{equation}
+Note that in the third term, we ignore the imaginary part for the same reason as for $\sigma_{\mu\nu}$. Also, since $\langle \partial_\mu| \psi\rangle$ is purely imaginary, differentiate by $\nu$ on both side and take the real part, we have
+\begin{equation}
+	\mathrm{Re}\langle \partial_\mu \partial_\nu \psi(\lambda)| \psi(\lambda) \rangle
+	= -\mathrm{Re}\langle \partial_\mu \psi(\lambda)| \partial_\nu \psi(\lambda) \rangle
+	= -\gamma_{\mu\nu}.
+\end{equation}  
+The absolute value of the inner product is then:
+\begin{equation}
+	|\langle \psi(\lambda+d\lambda)| \psi(\lambda)\rangle|
+	= 1-\frac{1}{2}(\gamma_{\mu\nu}(\lambda)-\beta_\mu(\lambda)\beta_\nu(\lambda)) d\lambda^\mu d\lambda^\nu
+	= 1-\frac{1}{2} g_{\mu\nu} d\lambda^\mu d\lambda^\nu.
+\end{equation}
+
+\section{Relation with Berry Curvature}
+For adiabatic system, $H(\lambda)|\psi_0(\lambda)\rangle = E_0(\lambda)|\psi_0(\lambda)\rangle$. Take derivative with respect to $\mu$ and calculate inner product with $|\psi_n\rangle$($n \ne 0$):
+\begin{equation}
+	\langle \psi_n |\partial_\mu \psi_0 \rangle = \frac{\langle \psi_n |\partial_\mu H| \psi_0 \rangle}{E_0 - E_n},\ n \ne 0.
+\end{equation}
+The QGT is
+\begin{eqnarray}
+	Q_{\mu\nu} &=& \langle \partial_\mu \psi_0 |(1-|\psi_0 \rangle \langle \psi_0|)| \partial_\nu \psi_0 \rangle \nonumber \\
+	&=& \sum_{n \ne 0} \langle \partial_\mu \psi_0|\psi_n\rangle \langle\psi_n|\partial_\nu \psi_0 \rangle \nonumber \\
+	&=& \sum_{n \ne 0} \frac{\langle \psi_0|\partial_\mu H|\psi_n\rangle \langle\psi_n|\partial_\nu H|\psi_0 \rangle}{(E_0 - E_n)^2}.
+\end{eqnarray}
+Note that the Berry curvature is
+\begin{eqnarray}
+	F_{\mu\nu} = \partial_{[\mu,}\beta_{\nu]} = i(Q_{\mu\nu} - Q_{\nu\mu})
+	= -2\mathrm{Im}Q_{\mu\nu}.
+\end{eqnarray}
+So that the imaginary part of QGT is proportional to Berry curvature:
+\begin{eqnarray}
+	Q_{\mu\nu} = g_{\mu\nu}-\frac{i}{2}F_{\mu\nu}.
+\end{eqnarray}
+
+%\begin{figure}[H]
+%\begin{centering}
+%\includegraphics[width=.4\linewidth]{}
+%\par\end{centering}
+%\caption{caption}
+%\end{figure}
+
+
+
+\end{document}
+
+
