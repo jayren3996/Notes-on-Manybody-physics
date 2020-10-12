@@ -1,0 +1,118 @@
+\documentclass[aps,prb,superscriptaddress]{revtex4}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{color}
+\usepackage{mathrsfs}
+\usepackage[colorlinks,bookmarks=true,citecolor=blue,linkcolor=red,urlcolor=blue]{hyperref}
+\usepackage{appendix}
+\usepackage{float}
+\setlength{\parindent}{10 pt}
+\setlength{\parskip}{2 pt}
+\setcounter{MaxMatrixCols}{30}
+\bibliographystyle{apsrev}
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+\begin{document}
+\title{QM in phase space}
+\author{Jie Ren}
+\maketitle
+
+\section{The Wigner-Weyl Representation}
+The \textbf{Wigner-Weyl transform} is the invertible mapping between functions in the quantum phase space formulation and Hilbert space operators in the Schrödinger picture.
+
+Often the mapping from functions on phase space to operators is called the \textbf{Weyl transform} or \textbf{Weyl quantization}, whereas the inverse mapping, from operators to functions on phase space, is called the \textbf{Wigner transform}.
+\subsection{The Wigner transform}
+For an operator $\hat A(\hat x, \hat p)$, the Wigner transform map it to a distribution function $A_W(x,p)$ in the phase space:
+\begin{equation}
+	A_W(x,p) \equiv \int \left\langle x+\frac{y}{2}\right|\hat A(\hat x,\hat p) \left|x-\frac{y}{2}\right\rangle e^{-\frac{i}{\hbar}py} dy.
+\end{equation}
+One important properties of this transform is that the trace of two operators can be expressed as the integral in the phase space:
+\begin{equation}
+	\mathrm{Tr}[\hat A \hat B]=\frac{1}{2\pi\hbar}\iint A_W(x,p)B_W(x,p)dxdp,
+\end{equation}
+The prove is straightforward:
+\begin{eqnarray}
+	&& \frac{1}{2\pi\hbar}\iint A_W(x,p)B_W(x,p)dxdp \nonumber \\
+	&=& \frac{1}{2\pi\hbar}\iiiint \left\langle x+\frac{y}{2}\right|\hat A(\hat x,\hat p) \left|x-\frac{y}{2}\right\rangle\left\langle x+\frac{z}{2}\right|\hat B(\hat x,\hat p) \left|x-\frac{z}{2}\right\rangle e^{-\frac{i}{\hbar}p(y+z)} dxdpdydz \nonumber \\
+	&=& \iint \left\langle x+\frac{y}{2}\right|\hat A(\hat x,\hat p) \left|x-\frac{y}{2}\right\rangle\left\langle x-\frac{y}{2}\right|\hat B(\hat x,\hat p) \left|x+\frac{y}{2}\right\rangle dxdy \nonumber \\
+	&=& \iint \langle u|\hat A(\hat x,\hat p) |v\rangle \langle v|\hat B(\hat x,\hat p) |u\rangle dudv \nonumber \\
+	&=& \mathrm{Tr}[\hat A \hat B].
+\end{eqnarray}
+where $A,B$ is the Wigner transform of two operators. Since all expectations can be expressed as the trace of density matrix and observables, we define the Wigner transform of density matrix as the \textbf{Wigner function}:
+\begin{eqnarray}
+	W(x,p) &\equiv & \int \langle x+\frac{y}{2}|\hat \rho|x-\frac{y}{2}\rangle e^{-\frac{i}{\hbar}py} dy \nonumber \\
+	&=& \int \psi\left(x+\frac{y}{2}\right)\psi^{*}\left(x-\frac{y}{2}\right) e^{-\frac{i}{\hbar}py} dy,
+\end{eqnarray}
+and the expectation can all be expressed as:
+\begin{equation}
+	\langle \hat A \rangle = \frac{1}{2\pi \hbar}\iint W(x,p) A_W(x,p) dxdp.
+\end{equation}
+For the operators that only involve $\hat x$ or $\hat p$, the Wigner transformation is:
+\begin{eqnarray}
+	A_W(\hat x) &=& A(x), \\
+	B_W(\hat p) &=& B(p),
+\end{eqnarray}
+which implies for general Hamiltonian of the form $\hat H = \hat T(\hat p)+\hat V(\hat x)$, the energy expectation is 
+\begin{equation}
+	\langle \hat H \rangle = \frac{1}{2\pi \hbar} \iint W(x,p)H(x,p) dxdp.
+\end{equation}
+
+
+\subsection{Basic properties of Wigner transform}
+The Wigner function is reminiscent of possibility distribution function in classical phase space. Here we will investigate the similarities and the differences.
+
+First, like the possibility distribution, the Wigner function is normalized. This is because
+\begin{equation}
+	\mathrm{Tr}[\hat \rho] = \frac{1}{2\pi \hbar}\iint dxdp W(x,p) \cdot 1_W = 1,
+\end{equation}
+while the Wigner transform of the identity operator is
+\begin{eqnarray}
+	1_W
+	&=& \int \left\langle x+\frac{y}{2}\right| \hat 1 \left|x-\frac{y}{2} \right\rangle e^{-\frac{i}{\hbar}py} dy \nonumber \\
+	&=& \int \delta(y) e^{-\frac{i}{\hbar}py} dy \nonumber \\	&=& 1.
+\end{eqnarray}
+However, unlike the possibility, the Wigner function are not always positive. To see this, let us consider the inner product of two orthogonal states:
+\begin{equation}
+	\langle \psi_1| \psi_2\rangle = 0\ \Longrightarrow
+	\ \mathrm{Tr}\left[\rho_1\rho_2 \right] = \frac{1}{2\pi \hbar} \iint dxdp W_1(x,p)W_2(x,p)=0,
+\end{equation}
+where $\rho_i = |\psi_i\rangle\langle \psi_i|$. This implies $W_1,W_2$ are not always positive. Nevertheless, the absolute value of Wigner function is bounded. To see that, notice we can rewrite the definition of Wigner function as
+\begin{equation}
+	W(x,p) = 2 \int \psi_1(y)\psi_2^{*}(y) dy,
+\end{equation}
+where
+\begin{eqnarray}
+	\psi_1(y) &=& \frac{1}{\sqrt{2}}e^{-\frac{i}{2\hbar}py} \psi\left(x+\frac{y}{2}\right), \\
+	\psi_2(y) &=& \frac{1}{\sqrt{2}}e^{+\frac{i}{2\hbar}py} \psi\left(x-\frac{y}{2}\right).
+\end{eqnarray}
+$\psi_1,\psi_2$ are 2 normalized wave function, we know that $|\langle\psi_1|\psi_2\rangle| \le 1$, so
+\begin{equation}
+	|W(x,p)| \le 2.
+\end{equation}
+
+
+
+\section{Weyl Quantization}
+\subsection{Weyl transform}
+The Weyl transform of the function $A(x,p)$ is given by the following operator in Hilbert space,	
+\begin{equation}
+	\hat A(\hat x,\hat p) =  \frac{1}{(2\pi \hbar)^2} \iiiint A(x,p) e^{\frac{i}{\hbar}[\xi(\hat x -x)+\eta(\hat p - p)]} d\xi d\eta dx dp.
+\end{equation}
+We first show that Weyl transform is the inverse of Wigner transform.
+
+
+%\begin{figure}[H]
+%\begin{centering}
+%\includegraphics[width=.4\linewidth]{}
+%\par\end{centering}
+%\caption{caption}
+%\end{figure}
+
+
+
+\end{document}
+
+
